@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-22 21:19:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Student" table="STUDENT">
+        <id name="sid" type="int">
+            <column name="SID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="grader" type="java.lang.String">
+            <column name="GRADER" />
+        </property>
+        <property name="xh" type="java.lang.String">
+            <column name="XH" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" />
+        </property>
+        <property name="telephone" type="java.lang.String">
+            <column name="TELEPHONE" />
+        </property>
+        <property name="card" type="java.lang.String">
+            <column name="CARD" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="teacher" type="java.lang.String">
+            <column name="TEACHER" />
+        </property>
+        <property name="profession" type="java.lang.String">
+            <column name="PROFESSION" />
+        </property>
+        <many-to-one name="dormity" class="com.tyz.model.Dormity" fetch="join" lazy="false">
+            <column name="did" />
+        </many-to-one>
+        <set name="lackstudents" table="LACKSTUDENT" inverse="false" lazy="false">
+            <key>
+                <column name="SID" />
+            </key>
+            <one-to-many class="com.tyz.model.Lackstudent" />
+        </set>
+    </class>
+</hibernate-mapping>

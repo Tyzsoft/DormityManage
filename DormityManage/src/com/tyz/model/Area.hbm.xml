@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-15 20:29:47 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Area" table="AREA">
+        <id name="ar_id" type="int">
+            <column name="AR_ID" />
+            <generator class="native" />
+        </id>
+        <property name="ar_name" type="java.lang.String">
+            <column name="AR_NAME" />
+        </property>
+        <property name="ar_uid" type="int">
+            <column name="AR_UID" />
+        </property>
+        <property name="ar_sort" type="int">
+            <column name="AR_SORT" />
+        </property>
+    </class>
+</hibernate-mapping>

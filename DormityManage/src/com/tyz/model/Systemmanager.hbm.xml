@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-22 21:19:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Systemmanager" table="SYSTEMMANAGER">
+        <id name="sid" type="int">
+            <column name="SID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="pwd" type="java.lang.String">
+            <column name="PWD" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" />
+        </property>
+        <property name="telephone" type="java.lang.String">
+            <column name="TELEPHONE" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="card" type="java.lang.String">
+            <column name="CARD" />
+        </property>
+        <property name="role" type="int">
+            <column name="ROLE" />
+        </property>
+        <many-to-one name="building" class="com.tyz.model.Building"  lazy="false">
+            <column name="bid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

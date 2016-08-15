@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-22 21:19:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Building" table="BUILDING">
+        <id name="bid" type="int">
+            <column name="BID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="introduction" type="java.lang.String">
+            <column name="INTRODUCTION" />
+        </property>
+        <set name="dormities" table="DORMITY" inverse="false" lazy="false">
+            <key>
+                <column name="BID" />
+            </key>
+            <one-to-many class="com.tyz.model.Dormity" />
+        </set>
+        <set name="systemmanagers" table="SYSTEMMANAGER"  lazy="false">
+            <key>
+                <column name="BID" />
+            </key>
+            <one-to-many class="com.tyz.model.Systemmanager" />
+        </set>
+    </class>
+</hibernate-mapping>

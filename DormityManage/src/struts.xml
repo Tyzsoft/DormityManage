@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	 <constant name="objectFactory" value="spring"></constant>
+	<package name="DormityManage" extends="struts-default" namespace="">
+
+	<interceptors>  
+        <!--字符集拦截器-->  
+         <interceptor name="privilegeInterceptor" class="privilegeInterceptor" />
+        <interceptor name="encodingInterceptor" class="encodingInterceptor" />  
+        <interceptor-stack name="encodingStack">  
+            <interceptor-ref name="defaultStack"></interceptor-ref>           
+            <interceptor-ref name="encodingInterceptor"></interceptor-ref>            
+        </interceptor-stack>  
+    </interceptors>  
+    <!--全局拦截栈-->  
+    <default-interceptor-ref name="encodingStack"></default-interceptor-ref> 
+	
+		
+	
+	<action name="sys_*" class="systemmanagerAction" method="{1}">
+			<result name="loginSuccess">/home.jsp</result>
+			<result name="dorLoginSuccess">/home2.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="updatePwdSuccsss">/welcome.jsp</result>
+			<result name="updatePwdFail">/sysupdatepwd.jsp</result>
+			<result name="sysindex">/sys.jsp</result>
+			<result name="exitSuccess">/login.jsp</result>
+			<result name="addSuccess" type="redirectAction">sys_index</result>
+			<result name="findProvince">/sysuser.jsp</result>
+			<result name="edit">/sysedit.jsp</result>
+			<result name="updateSuccess" type="redirectAction">sys_index</result>
+			<result name="delete" type="redirectAction">sys_index</result>
+			<result name="find">/sys.jsp</result>
+			<result name="loginFail">/login.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>           
+            <interceptor-ref name="encodingInterceptor"></interceptor-ref>   
+          
+	</action>
+		
+		<action name="build_*" class="buildingAction" method="{1}">
+			<result name="findAll">build/index.jsp</result>
+			<result name="add">build/add.jsp</result>
+			<result name="addbuild" type="redirectAction">build_findAll</result>
+			<result name="edit">build/edit.jsp</result>
+			<result name="editSuccess" type="redirectAction">build_findAll</result>
+			<result name="delete" type="redirectAction">build_findAll</result>
+				<result name="loginFail">error.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>           
+            <interceptor-ref name="encodingInterceptor"></interceptor-ref> 
+           
+		</action>	
+		
+		<action name="dor_*" class="dormityAction" method="{1}">
+		    <result name="findAll">dormitory/index.jsp</result>
+		    <result name="loginFail">error.jsp</result>
+		    <result name="findByname">dormitory/index.jsp</result>
+		  
+			<interceptor-ref name="defaultStack"></interceptor-ref>           
+            <interceptor-ref name="encodingInterceptor"></interceptor-ref>  
+         
+		</action>
+		
+		<action name="stu_*" class="studentAction" method="{1}">
+			<result name="findAll">student/index.jsp</result>
+			<result name="add">student/add.jsp</result>
+			<result name="loginFail">error.jsp</result>
+			<result name="delete" type="redirectAction">stu_findAll</result>
+			<result name="addstu" type="redirectAction">stu_findAll</result>
+			<result name="changeDor" type="redirectAction">stu_findAll</result>
+			<result name="find">student/index.jsp</result>
+			
+		</action>
+		<action name="lack_*" class="lackstudentAction" method="{1}">
+			<result name="findAll">lack/index.jsp</result>
+			<result name="add">lack/add.jsp</result>
+				<result name="loginFail">error.jsp</result>
+			<result name="addlack" type="redirectAction">lack_findAll</result>
+			<result name="cancel" type="redirectAction">lack_findAll</result>
+			<result name="find" >lack/index.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>           
+            <interceptor-ref name="encodingInterceptor"></interceptor-ref>  
+          
+		</action>
+		
+	</package>
+	
+  <package name="ajax_json" extends="json-default" >
+    <action name="findCity" class="jsonAction" method="findCity">
+      <result name="success" type="json">result</result>
+    </action>  
+      
+  </package>
+  
+	
+</struts>
+ 

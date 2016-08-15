@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-22 21:19:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Lackstudent" table="LACKSTUDENT">
+        <id name="lid" type="int">
+            <column name="LID" />
+            <generator class="native" />
+        </id>
+        <property name="time" type="java.util.Date">
+            <column name="TIME" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" />
+        </property>
+        <many-to-one name="student" class="com.tyz.model.Student" fetch="join" lazy="false">
+            <column name="sid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

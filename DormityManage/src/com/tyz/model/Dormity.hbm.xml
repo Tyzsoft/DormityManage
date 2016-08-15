@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-22 21:19:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.tyz.model.Dormity" table="DORMITY">
+        <id name="did" type="int">
+            <column name="DID" />
+            <generator class="native" />
+        </id>
+        <property name="num" type="java.lang.String">
+            <column name="NUM" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="count" type="int">
+            <column name="COUNT" />
+        </property>
+        <many-to-one name="building" class="com.tyz.model.Building" fetch="join" lazy="false">
+            <column name="bid" />
+        </many-to-one>
+        <set name="students" table="STUDENT" inverse="false" lazy="false">
+            <key>
+                <column name="DID" />
+            </key>
+            <one-to-many class="com.tyz.model.Student" />
+        </set>
+    </class>
+</hibernate-mapping>
